@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/gray</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+    </style>
+
+    <style name="NoRippleEffect">
+        <item name="android:clickable">true</item>
+    </style>
+
+    <!-- Splash Screen Theme -->
+
+    <style name="Theme.MyApp" parent="Base.Theme.MyApp" />
+
+    <style name="CustomBottomNavigationView">
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>

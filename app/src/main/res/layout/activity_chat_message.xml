@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.sites.ChatMessageActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:background="@color/primary_color"
+        >
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            app:srcCompat="@drawable/icon_arrow_back"
+            app:tint="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:importantForAccessibility="no"
+            android:contentDescription="@string/todo"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="@string/app_name"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/logo"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_below="@id/header"
+        android:layout_above="@id/footer"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Xin chào!"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/bg_item_chat"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Chào mừng bạn đến với VT Shop!"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/bg_item_chat"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="Tôi có thể giúp gì cho bạn!"
+            android:textColor="@color/text_color"
+            android:textSize="18sp"
+            android:padding="12dp"
+            android:layout_marginVertical="5dp"
+            android:background="@drawable/bg_item_chat"
+            />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        >
+        <View
+            android:id="@+id/line"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/primary_bg_color"
+            />
+        <EditText
+            android:layout_below="@id/line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textColor="@color/text_color"
+            android:background="@drawable/bg_edittext_chat"
+            android:hint="Nhập nội dung..."
+            android:padding="12dp"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/icon_emoji_happy"
+            android:drawableEnd="@drawable/icon_send"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

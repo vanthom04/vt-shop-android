@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CartFragment"
+    >
+    <TextView
+        android:id="@+id/title_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="@string/cart"
+        android:textColor="@color/white"
+        android:background="@color/primary_color"
+        android:textSize="28sp" />
+
+    <ProgressBar
+        android:id="@+id/loading_cart"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+
+    <LinearLayout
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        >
+
+        <ImageView
+            android:layout_width="380dp"
+            android:layout_height="380dp"
+            android:src="@drawable/not_found_cart"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chưa có sản phẩm trong giỏ hàng của bạn"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto"
+            />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_below="@id/title_cart"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_above="@id/box_bottom"
+        android:visibility="invisible"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/box_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+        android:visibility="invisible"
+        >
+
+        <TextView
+            android:id="@+id/into_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:text="@string/into_money"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/red_light"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/into_money" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submit_cart"
+            style="@android:style/Widget.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_submit"
+            android:drawableEnd="@drawable/icon_arrow_forward"
+            android:drawablePadding="6dp"
+            android:drawableTint="@color/white"
+            android:fontFamily="@font/roboto"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            android:paddingHorizontal="20dp"
+            android:text="@string/title_pay"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:targetApi="p" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
