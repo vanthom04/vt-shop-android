@@ -2,9 +2,9 @@ package com.vanthom04.vtshop.activities.products;
 
 import static com.vanthom04.vtshop.utils.AppUtils.changeIntToString;
 import static com.vanthom04.vtshop.utils.AppUtils.onClickGoToDetailProduct;
-import static com.vanthom04.vtshop.utils.Server.ADD_PRODUCT_TO_CART;
-import static com.vanthom04.vtshop.utils.Server.GET_ALL_PRODUCTS;
-import static com.vanthom04.vtshop.utils.Server.GET_PRODUCT_BY_ID;
+import static com.vanthom04.vtshop.utils.Apis.ADD_PRODUCT_TO_CART;
+import static com.vanthom04.vtshop.utils.Apis.GET_ALL_PRODUCTS;
+import static com.vanthom04.vtshop.utils.Apis.GET_PRODUCT_BY_ID;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

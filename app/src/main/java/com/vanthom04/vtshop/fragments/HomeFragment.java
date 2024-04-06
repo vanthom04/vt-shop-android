@@ -3,9 +3,9 @@ package com.vanthom04.vtshop.fragments;
 import static com.vanthom04.vtshop.utils.AppUtils.onClickGoToDetailProduct;
 import static com.vanthom04.vtshop.utils.AppUtils.onClickToToActivityProductsFeatured;
 import static com.vanthom04.vtshop.utils.AppUtils.onClickToToActivityProductsBrand;
-import static com.vanthom04.vtshop.utils.Server.GET_ALL_PRODUCTS;
-import static com.vanthom04.vtshop.utils.Server.GET_ALL_SLIDES;
-import static com.vanthom04.vtshop.utils.Server.GET_USER_BY_ID;
+import static com.vanthom04.vtshop.utils.Apis.GET_ALL_PRODUCTS;
+import static com.vanthom04.vtshop.utils.Apis.GET_ALL_SLIDES;
+import static com.vanthom04.vtshop.utils.Apis.GET_USER_BY_ID;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -73,11 +73,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if (viewSlide.getCurrentItem() == listSlide.size() - 1) {
-                viewSlide.setCurrentItem(0);
-            } else {
-                viewSlide.setCurrentItem(viewSlide.getCurrentItem() + 1);
-            }
+//            if (viewSlide.getCurrentItem() == listSlide.size() - 1) {
+//                viewSlide.setCurrentItem(0);
+//            } else {
+//                viewSlide.setCurrentItem(viewSlide.getCurrentItem() + 1);
+//            }
         }
     };
 

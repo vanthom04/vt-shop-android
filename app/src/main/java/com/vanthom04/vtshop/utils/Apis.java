@@ -1,7 +1,7 @@
 package com.vanthom04.vtshop.utils;
 
-public class Server {
-    public static final String BASE_URL = "https://2afd-115-75-223-20.ngrok-free.app/api/v1";
+public class Apis {
+    public static final String BASE_URL = "https://4b85-115-79-138-116.ngrok-free.app/api/v1";
 
     // SLIDES
     public static final String GET_ALL_SLIDES = BASE_URL + "/slides";
@@ -9,7 +9,6 @@ public class Server {
     // AUTHENTICATION
     public static final String REGISTER_USER_URL = BASE_URL + "/auth/register";
     public static final String LOGIN_USER_URL = BASE_URL + "/auth/login";
-    public static final String VERIFY_ACCOUNT = BASE_URL + "/auth/verify";
     public static final String GET_USER_BY_ID = BASE_URL + "/users/";
 
     // BRANDS

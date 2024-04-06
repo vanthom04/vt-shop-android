@@ -1,7 +1,7 @@
 package com.vanthom04.vtshop.activities.sites;
 
 import static com.vanthom04.vtshop.utils.AppUtils.onClickGoToDetailProduct;
-import static com.vanthom04.vtshop.utils.Server.GET_ALL_PRODUCTS;
+import static com.vanthom04.vtshop.utils.Apis.GET_ALL_PRODUCTS;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -15,8 +15,11 @@ import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -41,7 +44,8 @@ public class SearchActivity extends AppCompatActivity {
 
     private static final long DEBOUNCE_DELAY = 500;
     private final Handler debounceHandler = new Handler(Looper.getMainLooper());
-    EditText editTextSearch;
+    EditText inputSearch;
+    ImageView btnBack, btnClear;
     RecyclerView recyclerViewSearch;
     ProductLinearAdapter productLinearAdapter;
 
@@ -50,15 +54,25 @@ public class SearchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
 
-        editTextSearch = findViewById(R.id.btn_search);
+        btnBack = findViewById(R.id.btn_back);
+        inputSearch = findViewById(R.id.input_search);
+        btnClear = findViewById(R.id.btn_clear);
         recyclerViewSearch = findViewById(R.id.recycler_view_search);
 
-        editTextSearch.requestFocus();
+        inputSearch.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(editTextSearch, InputMethodManager.SHOW_IMPLICIT);
+        imm.showSoftInput(inputSearch, InputMethodManager.SHOW_IMPLICIT);
 
-        //
-        editTextSearch.addTextChangedListener(new TextWatcher() {
+        // btn back
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        // input search
+        inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -68,6 +82,18 @@ public class SearchActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 debounceHandler.removeCallbacks(debounceRunnable);
                 debounceHandler.postDelayed(debounceRunnable, DEBOUNCE_DELAY);
+
+                if (s.toString().length() > 0) {
+                    btnClear.setVisibility(View.VISIBLE);
+                    btnClear.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            inputSearch.setText("");
+                        }
+                    });
+                } else {
+                    btnClear.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override
@@ -80,7 +106,7 @@ public class SearchActivity extends AppCompatActivity {
     private final Runnable debounceRunnable = new Runnable() {
         @Override
         public void run() {
-            String name = editTextSearch.getText().toString();
+            String name = inputSearch.getText().toString();
 
             if (name.length() > 0) {
                 loadDataByName(name);

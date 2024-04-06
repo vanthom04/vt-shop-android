@@ -53,10 +53,16 @@ public class CartProductAdapter extends RecyclerView.Adapter<CartProductAdapter.
         holder.price.setText(changeIntToString(product.getPrice()));
         holder.quantity.setText(String.valueOf(product.getQuantity()));
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.imgView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                itemProductListener.onClickItemProduct(product);
+                itemProductListener.onClickItemProduct(product.getProductId());
+            }
+        });
+        holder.name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemProductListener.onClickItemProduct(product.getProductId());
             }
         });
     }

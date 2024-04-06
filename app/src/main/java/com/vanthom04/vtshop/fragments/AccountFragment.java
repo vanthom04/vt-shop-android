@@ -1,12 +1,10 @@
 package com.vanthom04.vtshop.fragments;
 
-import static com.vanthom04.vtshop.utils.Server.GET_USER_BY_ID;
+import static com.vanthom04.vtshop.utils.Apis.GET_USER_BY_ID;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.cardview.widget.CardView;
@@ -93,9 +90,8 @@ public class AccountFragment extends Fragment {
                             try {
                                 JSONObject user = response.getJSONObject("user");
 
-                                String username = user.getString("username");
                                 String fullName = user.getString("fullName");
-                                viewFullName.setText(fullName.isEmpty() ? username : fullName);
+                                viewFullName.setText(fullName);
                                 viewEmail.setText(user.getString("email"));
 
                                 String photoURL = user.getString("photoURL");

@@ -15,7 +15,8 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="120dp"
@@ -64,21 +65,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:text="@string/username"
+                    android:text="@string/email"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/input_username_login"
+                    android:id="@+id/input_email_login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_edittext"
                     android:ems="10"
-                    android:maxLength="20"
                     android:fontFamily="@font/roboto"
-                    android:hint="Vd: vtshop123"
+                    android:hint="@string/hint_text_email"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
                     android:padding="12dp"

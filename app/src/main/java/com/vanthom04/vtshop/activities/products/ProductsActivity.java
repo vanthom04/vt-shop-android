@@ -2,7 +2,7 @@ package com.vanthom04.vtshop.activities.products;
 
 import static com.vanthom04.vtshop.utils.AppUtils.capitalize;
 import static com.vanthom04.vtshop.utils.AppUtils.onClickGoToDetailProduct;
-import static com.vanthom04.vtshop.utils.Server.GET_ALL_PRODUCTS;
+import static com.vanthom04.vtshop.utils.Apis.GET_ALL_PRODUCTS;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -16,7 +16,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;

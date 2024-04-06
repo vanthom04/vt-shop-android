@@ -1,7 +1,8 @@
 package com.vanthom04.vtshop.fragments;
 
 import static com.vanthom04.vtshop.utils.AppUtils.changeIntToString;
-import static com.vanthom04.vtshop.utils.Server.GET_CART_BY_USER;
+import static com.vanthom04.vtshop.utils.Apis.GET_CART_BY_USER;
+import static com.vanthom04.vtshop.utils.AppUtils.onClickGoToDetailProduct;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -147,7 +148,7 @@ public class CartFragment extends Fragment {
         cartProductAdapter = new CartProductAdapter(new IOnClickItemProductListener() {
             @Override
             public void onClickItemProduct(String productId) {
-
+                onClickGoToDetailProduct(getContext(), productId);
             }
         });
         cartProductAdapter.setData(list);

@@ -1,6 +1,6 @@
 package com.vanthom04.vtshop.activities.auth;
 
-import static com.vanthom04.vtshop.utils.Server.REGISTER_USER_URL;
+import static com.vanthom04.vtshop.utils.Apis.REGISTER_USER_URL;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -20,18 +20,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.vanthom04.vtshop.MainActivity;
 import com.vanthom04.vtshop.R;
+import com.vanthom04.vtshop.utils.AppPreferences;
 import com.vanthom04.vtshop.utils.AppUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.CookieManager;
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText inputUsername, inputEmail, inputPassword;
+    EditText inputFullName, inputEmail, inputPassword;
     AppCompatButton btnRegister;
     TextView btnLogin;
 
@@ -48,24 +49,22 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void submitRegister() {
         btnRegister = findViewById(R.id.btn_submit_register);
-        inputUsername = findViewById(R.id.input_username);
+        inputFullName = findViewById(R.id.input_full_name);
         inputEmail = findViewById(R.id.input_email);
         inputPassword = findViewById(R.id.input_password);
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = inputUsername.getText().toString().trim();
+                String fullName = inputFullName.getText().toString().trim();
                 String email = inputEmail.getText().toString().trim();
                 String password = inputPassword.getText().toString().trim();
 
-                if (username.isEmpty()) {
-                    inputUsername.setHint("Vui lòng nhập username!");
-                    inputUsername.setHintTextColor(getResources().getColor(R.color.red_light));
+                if (fullName.isEmpty()) {
+                    inputFullName.setHint("Vui lòng nhập họ, tên!");
+                    inputFullName.setHintTextColor(getResources().getColor(R.color.red_light));
                     return;
-                } else if (username.length() < 3) {
-                    Toast.makeText(RegisterActivity.this, "username tối thiểu là 3 ký tự!", Toast.LENGTH_SHORT).show();
-                } else if (email.isEmpty()) {
+                }  else if (email.isEmpty()) {
                     inputEmail.setHint("Vui lòng nhập email!");
                     inputEmail.setHintTextColor(getResources().getColor(R.color.red_light));
                     return;
@@ -82,17 +81,17 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
                 // handle register
-                handleRegister(username, email, password);
+                handleRegister(fullName, email, password);
             }
         });
     }
 
-    private void handleRegister(String username, String email, String password) {
+    private void handleRegister(String fullName, String email, String password) {
         RequestQueue requestQueue = Volley.newRequestQueue(RegisterActivity.this);
 
         JSONObject data = new JSONObject();
         try {
-            data.put("username", username);
+            data.put("fullName", fullName);
             data.put("email", email);
             data.put("password", password);
         } catch (JSONException e) {
@@ -112,7 +111,11 @@ public class RegisterActivity extends AppCompatActivity {
                             if (!user.getBoolean("success")) {
                                 Toast.makeText(RegisterActivity.this, user.getString("message"), Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(RegisterActivity.this, VerifyAccountActivity.class));
+                                AppPreferences preferences = AppPreferences.getInstance(RegisterActivity.this);
+                                preferences.saveString("userId", user.getString("userId"));
+                                preferences.saveString("accessToken", user.getString("accessToken"));
+
+                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                             }
                         } catch (JSONException e) {
                             Log.e("error_load_data", Objects.requireNonNull(e.getMessage()));
@@ -126,7 +129,11 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }
         );
-        jsonObjectUser.setRetryPolicy(new DefaultRetryPolicy(5000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        jsonObjectUser.setRetryPolicy(new DefaultRetryPolicy(
+                5000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
 
         requestQueue.add(jsonObjectUser);
     }
