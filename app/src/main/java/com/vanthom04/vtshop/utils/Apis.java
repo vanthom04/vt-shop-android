@@ -1,7 +1,7 @@
 package com.vanthom04.vtshop.utils;
 
 public class Apis {
-    public static final String BASE_URL = "https://4b85-115-79-138-116.ngrok-free.app/api/v1";
+    public static final String BASE_URL = "https://vt-shop-api.vercel.app/api/v1";
 
     // SLIDES
     public static final String GET_ALL_SLIDES = BASE_URL + "/slides";
